@@ -4,8 +4,8 @@
 	<head> 
 		<script type="text/javascript">
 			var num = 0;
+			var sps = 0
 			var num_upgrade_1 = 0;
-			var clicker = document.getElementById("clicker");
 
 			function clicked() {
 				num += 1;
@@ -21,15 +21,28 @@
 					upgrade_1.innerHTML = num_upgrade_1;
 					var count = document.getElementById("count");
 					count.innerHTML = num;
+					sps += 1;
+					var stonksps = document.getElementById("stonks_per_second");
+					stonksps = sps;
 				}
 			}
+
+			set
 		</script>
 
 	</head>
 
 <body>
+	<div> 
+		<h1> 
+			Stonks per second:
+		</h1>
+		<p id="stonks_per_second".> 
+			0
+		</p>
+	</div>
 	<div >
-		<img id = "clicker" onclick="clicked()" src="gamestop_temp.png" alt="Click" width="250" height="250">
+		<img onclick="clicked()" src="gamestop_temp.png" alt="Click" width="250" height="250">
 	</div>
 
 	<div>
@@ -37,7 +50,7 @@
 	</div>
 
 	<div>
-		<p> costs $10 each: </p>
+		<p> Upgrade 1, costs $10 each: </p>
 		<button type="button" id = "upgrade_1" onclick="purchase_1()"> 0 </button>
 	</div>
 	
