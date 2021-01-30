@@ -6,14 +6,19 @@ html {
 .left-column {
   float: left;
   /*border-left: 3px solid black;*/
-  width: 33%;
+  width: 50%;
   height: 1000px;
 }
 
 .middle-column {
   float: left;
+<<<<<<< HEAD
+  border-left: 3px solid black;
+  width: 50%;
+=======
   border-left: 1px solid white;
   width: 33%;
+>>>>>>> 12cb422865288790d8386a33c6fbe09111686577
   height: 1000px;
 }
 
