@@ -1,34 +1,27 @@
-/*column {
-  border-left: 3px solid black;
-  float: left;
-  width: 33.33333333%;
-  padding: 10px;
-  height: 1000px;
+html {
+  background-image: linear-gradient(to bottom, black, grey);
+  background-size: cover;
 }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}*/
 .left-column {
   float: left;
   /*border-left: 3px solid black;*/
   width: 33%;
   height: 1000px;
+
 }
 
 .middle-column {
   float: left;
-  border-left: 3px solid black;
+  border-left: 1px solid white;
   width: 33%;
   height: 1000px;
 }
 
 .right-column {
   float: left;
-  border-left: 3px solid black;
-  width: 33%;
+  border-left: 1px solid white;
+  width: 33.33%;
   height: 1000px;
 }
 /* Clear floats after the columns */
