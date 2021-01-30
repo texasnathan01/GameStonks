@@ -13,6 +13,7 @@
 
       var click_value = 1;
       var cash_hands_bool = false;
+      var silver_hands_bool = false;
 
       setInterval(function() {
         num += sps;
@@ -35,6 +36,18 @@
           var info = document.getElementById("cash_hands_info");
           info.innerHTML = "BOUGHT!";
           cash_hands = true;
+        }
+      }
+
+      function silver_hands() {
+        if(!silver_hands_bool && num >= 1000){
+          num -= 1000;
+          click_value = 50;
+          var count = document.getElementById("count");
+          count.innerHTML = num;
+          var info = document.getElementById("silver_hands_info");
+          info.innerHTML = "BOUGHT!";
+          silver_hands = true;
         }
       }
 
@@ -88,6 +101,12 @@
           <button type="button" id = "cash_hands" onclick="cash_hands()">
             <h3> Cash Hands, increases click value to 5 </h3>
             <p id="cash_hands_info"> Cost: $100 </p>
+          </button>
+        </li>
+        <li>
+          <button type="button" id = "silver_hands" onclick="silver_hands()">
+            <h3> Silver Hands, increases click value to 50 </h3>
+            <p id="silver_hands_info"> Cost: $1000 </p>
           </button>
         </li>
         <li>
