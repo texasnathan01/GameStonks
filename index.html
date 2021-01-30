@@ -12,6 +12,10 @@
       var cost_upgrade_2 = 100;
       var num_upgrade_3 = 0;
       var cost_upgrade_3 = 1000;
+      var num_upgrade_4 = 0;
+      var cost_upgrade_4 = 10000;
+      var num_upgrade_5 = 0;
+      var cost_upgrade_5 = 100000;
 
       var click_value = 1;
       var cash_hands_bool = false;
@@ -141,6 +145,66 @@
         }
       }
 
+      function purchase_4() {
+      if(num >= cost_upgrade_4){
+        num -= cost_upgrade_4;
+        var count = document.getElementById("count");
+        count.innerHTML = num;
+
+        num_upgrade_4 += 1;
+        var upgrade_4 = document.getElementById("owned_4");
+        upgrade_4.innerHTML = num_upgrade_4;
+
+        sps += 1000;
+        var stonksps = document.getElementById("stonks_per_second");
+        stonksps.innerHTML = sps;
+
+        cost_upgrade_4 += 500;
+        var cost = document.getElementById("upgrade_4_cost");
+        cost.innerHTML = cost_upgrade_4;
+        }
+      }
+
+      function purchase_4() {
+      if(num >= cost_upgrade_4){
+        num -= cost_upgrade_4;
+        var count = document.getElementById("count");
+        count.innerHTML = num;
+
+        num_upgrade_4 += 1;
+        var upgrade_4 = document.getElementById("owned_4");
+        upgrade_4.innerHTML = num_upgrade_4;
+
+        sps += 1000;
+        var stonksps = document.getElementById("stonks_per_second");
+        stonksps.innerHTML = sps;
+
+        cost_upgrade_4 += 500;
+        var cost = document.getElementById("upgrade_4_cost");
+        cost.innerHTML = cost_upgrade_4;
+        }
+      }
+
+      function purchase_5() {
+      if(num >= cost_upgrade_5){
+        num -= cost_upgrade_5;
+        var count = document.getElementById("count");
+        count.innerHTML = num;
+
+        num_upgrade_5 += 1;
+        var upgrade_5 = document.getElementById("owned_5");
+        upgrade_5.innerHTML = num_upgrade_5;
+
+        sps += 10000;
+        var stonksps = document.getElementById("stonks_per_second");
+        stonksps.innerHTML = sps;
+
+        cost_upgrade_5 += 5000;
+        var cost = document.getElementById("upgrade_5_cost");
+        cost.innerHTML = cost_upgrade_5;
+        }
+      }
+
     </script>
 </head>
 <body>
@@ -191,6 +255,20 @@
             <h3> Upgrade 3, buys 100 stonks per second</h3>
             <p> Cost: $<span id="upgrade_3_cost">1000</span></p>
             <p> Owned: <span id="owned_3">0</span></p>
+          </button>
+        </li>
+        <li>
+          <button type="button" id = "upgrade_4" onclick="purchase_4()">
+            <h3> Upgrade 4, buys 1000 stonks per second</h3>
+            <p> Cost: $<span id="upgrade_4_cost">10000</span></p>
+            <p> Owned: <span id="owned_4">0</span></p>
+          </button>
+        </li>
+        <li>
+          <button type="button" id = "upgrade_5" onclick="purchase_5()">
+            <h3> Upgrade 5, buys 10000 stonks per second</h3>
+            <p> Cost: $<span id="upgrade_5_cost">100000</span></p>
+            <p> Owned: <span id="owned_5">0</span></p>
           </button>
         </li>
     	</ul>
