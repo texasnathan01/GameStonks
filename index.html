@@ -11,6 +11,9 @@
       var num_upgrade_2 = 0;
       var cost_upgrade_2 = 100;
 
+      var click_value = 1;
+      var cash_hands_bool = false;
+
       setInterval(function() {
         num += sps;
         var count = document.getElementById("count");
@@ -18,9 +21,21 @@
       }, 1000)
 
       function clicked() {
-        num += 1;
+        num += click_value;
         var count = document.getElementById("count");
         count.innerHTML = num;
+      }
+
+      function cash_hands() {
+        if(!cash_hands_bool && num >= 100){
+          num -= 100;
+          click_value = 5;
+          var count = document.getElementById("count");
+          count.innerHTML = num;
+          var info = document.getElementById("cash_hands_info");
+          info.innerHTML = "BOUGHT!";
+          cash_hands = true;
+        }
       }
 
       function purchase_1() {
@@ -70,6 +85,12 @@
   		<h3>Upgrades</h3>
     	<ul>
       	<li>
+          <button type="button" id = "cash_hands" onclick="cash_hands()">
+            <h3> Cash Hands, increases click value to 5 </h3>
+            <p id="cash_hands_info"> Cost: $100 </p>
+          </button>
+        </li>
+        <li>
           <button type="button" id = "upgrade_1" onclick="purchase_1()"> 
             <h3> Upgrade 1, buys 1 stonk per second</h3>
             <p> Cost: $<span id="upgrade_1_cost">10</span></p>
