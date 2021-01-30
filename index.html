@@ -32,7 +32,7 @@
           num_upgrade_1 += 1;
           var upgrade_1 = document.getElementById("owned_1");
           upgrade_1.innerHTML = num_upgrade_1;
-          
+
           sps += 1;
           var stonksps = document.getElementById("stonks_per_second");
           stonksps.innerHTML = sps;
@@ -52,7 +52,7 @@
         num_upgrade_2 += 1;
         var upgrade_2 = document.getElementById("owned_2");
         upgrade_2.innerHTML = num_upgrade_2;
-          
+
         sps += 10;
         var stonksps = document.getElementById("stonks_per_second");
         stonksps.innerHTML = sps;
@@ -62,6 +62,50 @@
         cost.innerHTML = cost_upgrade_2;
         }
       }
+			window.onload = function () {
+
+			var dps = []; // dataPoints
+			var chart = new CanvasJS.Chart("chartContainer", {
+				title :{
+					text: "Stonk Chart"
+				},
+				data: [{
+					type: "line",
+					dataPoints: dps
+				}]
+			});
+
+			var xVal = 0;
+			var yVal = 15;
+			var updateInterval = 1000;
+			var dataLength = 50; // number of dataPoints visible at any point
+
+			var updateChart = function (count) {
+
+				count = count || 1;
+
+				for (var j = 0; j < count; j++) {
+					yVal = num;
+					dps.push({
+						x: xVal,
+						y: yVal
+					});
+					xVal++;
+				}
+
+				if (dps.length > dataLength) {
+					dps.shift();
+				}
+
+				chart.render();
+			};
+
+			updateChart(dataLength);
+			setInterval(function(){updateChart()}, updateInterval);
+
+		}
+
+
     </script>
 </head>
 <body>
@@ -70,14 +114,14 @@
   		<h3>Upgrades</h3>
     	<ul>
       	<li>
-          <button type="button" id = "upgrade_1" onclick="purchase_1()"> 
+          <button type="button" id = "upgrade_1" onclick="purchase_1()">
             <h3> Upgrade 1</h3>
             <p> Cost: $<span id="upgrade_1_cost">10</span></p>
             <p> Owned: <span id="owned_1">0</span></p>
           </button>
         </li>
         <li>
-          <button type="button" id = "upgrade_2" onclick="purchase_2()"> 
+          <button type="button" id = "upgrade_2" onclick="purchase_2()">
             <h3> Upgrade 2</h3>
             <p> Cost: $<span id="upgrade_2_cost">100</span></p>
             <p> Owned: <span id="owned_2">0</span></p>
@@ -90,10 +134,10 @@
 <div class="row">
 
   <div class="left-column">
-    <h1> 
+    <h1>
       Total stonks: $ <span id = "count">0</span>
     </h1>
-    <h3> 
+    <h3>
       Stonks per second: $ <span id="stonks_per_second">0</span>
     </h3>
     <img onclick="clicked()" src="gameStonksButton.png" alt="Click" width="250" height="250">
@@ -101,7 +145,8 @@
 	</div>
 
 	<div class="middle-column">
-		<h1>test 2</h1>
+		<div id="chartContainer" style="height: 300px; width: 450px;"></div>
+		<!--><script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script><!-->
 	</div>
 
 	<!--<div class="right-column">
