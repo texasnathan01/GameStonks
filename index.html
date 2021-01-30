@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript">
       var num = 0;
-      var sps = 1000;
+      var sps = 0;
       var num_upgrade_1 = 0;
       var cost_upgrade_1 = 10;
       var num_upgrade_2 = 0;
@@ -130,7 +130,7 @@
         num_upgrade_3 += 1;
         var upgrade_3 = document.getElementById("owned_3");
         upgrade_3.innerHTML = num_upgrade_3;
-          
+
         sps += 100;
         var stonksps = document.getElementById("stonks_per_second");
         stonksps.innerHTML = sps;
@@ -187,7 +187,7 @@
           </button>
         </li>
         <li>
-          <button type="button" id = "upgrade_3" onclick="purchase_3()"> 
+          <button type="button" id = "upgrade_3" onclick="purchase_3()">
             <h3> Upgrade 3, buys 100 stonks per second</h3>
             <p> Cost: $<span id="upgrade_3_cost">1000</span></p>
             <p> Owned: <span id="owned_3">0</span></p>
