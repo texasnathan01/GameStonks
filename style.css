@@ -1,0 +1,45 @@
+/*column {
+  border-left: 3px solid black;
+  float: left;
+  width: 33.33333333%;
+  padding: 10px;
+  height: 1000px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}*/
+.left-column {
+  float: left;
+  /*border-left: 3px solid black;*/
+  width: 33%;
+  height: 1000px;
+}
+
+.middle-column {
+  float: left;
+  border-left: 3px solid black;
+  width: 33%;
+  height: 1000px;
+}
+
+.right-column {
+  float: left;
+  border-left: 3px solid black;
+  width: 33%;
+  height: 1000px;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
