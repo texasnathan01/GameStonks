@@ -14,14 +14,14 @@
 .left-column {
   float: left;
   /*border-left: 3px solid black;*/
-  width: 33%;
+  width: 50%;
   height: 1000px;
 }
 
 .middle-column {
   float: left;
   border-left: 3px solid black;
-  width: 33%;
+  width: 50%;
   height: 1000px;
 }
 
