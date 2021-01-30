@@ -12,6 +12,10 @@
       var cost_upgrade_2 = 100;
       var num_upgrade_3 = 0;
       var cost_upgrade_3 = 1000;
+      var num_upgrade_4 = 0;
+      var cost_upgrade_4 = 10000;
+      var num_upgrade_5 = 0;
+      var cost_upgrade_5 = 100000;
 
       var click_value = 1;
       var cash_hands_bool = false;
@@ -120,26 +124,49 @@
         cost.innerHTML = cost_upgrade_2;
         }
       }
+			window.onload = function () {
 
-      function purchase_3() {
-      if(num >= cost_upgrade_3){
-        num -= cost_upgrade_3;
-        var count = document.getElementById("count");
-        count.innerHTML = num;
+			var dps = []; // dataPoints
+			var chart = new CanvasJS.Chart("chartContainer", {
+				title :{
+					text: "Stonk Chart"
+				},
+				data: [{
+					type: "line",
+					dataPoints: dps
+				}]
+			});
 
-        num_upgrade_3 += 1;
-        var upgrade_3 = document.getElementById("owned_3");
-        upgrade_3.innerHTML = num_upgrade_3;
+			var xVal = 0;
+			var yVal = 15;
+			var updateInterval = 1000;
+			var dataLength = 50; // number of dataPoints visible at any point
 
-        sps += 100;
-        var stonksps = document.getElementById("stonks_per_second");
-        stonksps.innerHTML = sps;
+			var updateChart = function (count) {
 
-        cost_upgrade_3 += 500;
-        var cost = document.getElementById("upgrade_3_cost");
-        cost.innerHTML = cost_upgrade_3;
-        }
-      }
+				count = count || 1;
+
+				for (var j = 0; j < count; j++) {
+					yVal = num;
+					dps.push({
+						x: xVal,
+						y: yVal
+					});
+					xVal++;
+				}
+
+				if (dps.length > dataLength) {
+					dps.shift();
+				}
+
+				chart.render();
+			};
+
+			updateChart(dataLength);
+			setInterval(function(){updateChart()}, updateInterval);
+
+		}
+
 
     </script>
 </head>
@@ -152,24 +179,28 @@
           <button type="button" id = "cash_hands" onclick="cash_hands()">
             <h3>  Cash Hands, increases click value to 5 </h3>
             <p id="cash_hands_info"> Cost: $100 </p>
+            <img src = "cashHands.png">
           </button>
         </li>
         <li>
           <button type="button" id = "silver_hands" onclick="silver_hands()">
             <h3> Silver Hands, increases click value to 50 </h3>
             <p id="silver_hands_info"> Cost: $1000 </p>
+            <img src = "silverHands.png">
           </button>
         </li>
 				<li>
 					<button type="button" id = "gold_hands" onclick="gold_hands()">
 						<h3> Gold Hands, increases click value to 500 </h3>
 						<p id="gold_hands_info"> Cost: $10000 </p>
+            <img src = "goldHands.png">
 					</button>
 				</li>
 				<li>
 					<button type="button" id = "diamond_hands" onclick="diamond_hands()">
 						<h3> Diamond Hands, increases click value to 5000 </h3>
 						<p id="diamond_hands_info"> Cost: $100000 </p>
+            <img src = "diamondHands.png">
 					</button>
 				</li>
         <li>
@@ -193,6 +224,20 @@
             <p> Owned: <span id="owned_3">0</span></p>
           </button>
         </li>
+        <li>
+          <button type="button" id = "upgrade_4" onclick="purchase_4()">
+            <h3> Upgrade 4, buys 1000 stonks per second</h3>
+            <p> Cost: $<span id="upgrade_4_cost">10000</span></p>
+            <p> Owned: <span id="owned_4">0</span></p>
+          </button>
+        </li>
+        <li>
+          <button type="button" id = "upgrade_5" onclick="purchase_5()">
+            <h3> Upgrade 5, buys 10000 stonks per second</h3>
+            <p> Cost: $<span id="upgrade_5_cost">100000</span></p>
+            <p> Owned: <span id="owned_5">0</span></p>
+          </button>
+        </li>
     	</ul>
     </nav>
 	</aside>
@@ -212,7 +257,8 @@
 	</div>
 
 	<div class="middle-column">
-		<h1>Graphical Earnings</h1>
+		<div id="chartContainer" style="height: 300px; width: 450px;"></div>
+		<!--><script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script><!-->
 	</div>
 
 	<!--<div class="right-column">
