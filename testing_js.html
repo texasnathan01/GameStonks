@@ -6,6 +6,13 @@
 			var num = 0;
 			var sps = 0
 			var num_upgrade_1 = 0;
+			var cost_upgrade_1 = 10;
+
+			setInterval(function() {
+				num += sps;
+				var count = document.getElementById("count");
+				count.innerHTML = num;
+			}, 1000)
 
 			function clicked() {
 				num += 1;
@@ -14,16 +21,22 @@
 			}
 
 			function purchase_1() {
-				if(num >= 10){
-					num -= 10;
+				if(num >= cost_upgrade_1){
+					num -= cost_upgrade_1;
+					var count = document.getElementById("count");
+					count.innerHTML = num;
+
 					num_upgrade_1 += 1;
 					var upgrade_1 = document.getElementById("upgrade_1");
 					upgrade_1.innerHTML = num_upgrade_1;
-					var count = document.getElementById("count");
-					count.innerHTML = num;
+					
 					sps += 1;
 					var stonksps = document.getElementById("stonks_per_second");
-					stonksps = sps;
+					stonksps.innerHTML = sps;
+
+					cost_upgrade_1 += 5;
+					var cost = document.getElementById("upgrade_1_cost");
+					cost.innerHTML = cost_upgrade_1;
 				}
 			}
 
@@ -34,23 +47,19 @@
 
 <body>
 	<div> 
-		<h1> 
-			Stonks per second:
+		<h1> Total stonks: $ <span id = "count">0</span>
 		</h1>
-		<p id="stonks_per_second".> 
-			0
-		</p>
+		<h3> 
+			Stonks per second: $ <span id="stonks_per_second">0</span>
+		</h3>
 	</div>
 	<div >
-		<img onclick="clicked()" src="gamestop_temp.png" alt="Click" width="250" height="250">
+		<img onclick="clicked()" src="gameStonksButton.png" alt="Click" width="250" height="250">
 	</div>
 
 	<div>
-		<p id = "count"> 0 </p>
-	</div>
-
-	<div>
-		<p> Upgrade 1, costs $10 each: </p>
+		<p> Upgrade: 1</p>
+		<p> Cost: $<span id="upgrade_1_cost">10</span></p>
 		<button type="button" id = "upgrade_1" onclick="purchase_1()"> 0 </button>
 	</div>
 	
