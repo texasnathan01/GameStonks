@@ -10,6 +10,8 @@
       var cost_upgrade_1 = 10;
       var num_upgrade_2 = 0;
       var cost_upgrade_2 = 100;
+      var num_upgrade_3 = 0;
+      var cost_upgrade_3 = 1000;
 
       var click_value = 1;
       var cash_hands_bool = false;
@@ -90,6 +92,27 @@
         cost.innerHTML = cost_upgrade_2;
         }
       }
+
+      function purchase_3() {
+      if(num >= cost_upgrade_3){
+        num -= cost_upgrade_3;
+        var count = document.getElementById("count");
+        count.innerHTML = num;
+
+        num_upgrade_3 += 1;
+        var upgrade_3 = document.getElementById("owned_3");
+        upgrade_3.innerHTML = num_upgrade_3;
+          
+        sps += 100;
+        var stonksps = document.getElementById("stonks_per_second");
+        stonksps.innerHTML = sps;
+
+        cost_upgrade_3 += 500;
+        var cost = document.getElementById("upgrade_3_cost");
+        cost.innerHTML = cost_upgrade_3;
+        }
+      }
+
     </script>
 </head>
 <body>
@@ -121,6 +144,13 @@
             <h3> Upgrade 2, buys 10 stonks per second</h3>
             <p> Cost: $<span id="upgrade_2_cost">100</span></p>
             <p> Owned: <span id="owned_2">0</span></p>
+          </button>
+        </li>
+        <li>
+          <button type="button" id = "upgrade_3" onclick="purchase_3()"> 
+            <h3> Upgrade 3, buys 100 stonks per second</h3>
+            <p> Cost: $<span id="upgrade_3_cost">1000</span></p>
+            <p> Owned: <span id="owned_3">0</span></p>
           </button>
         </li>
     	</ul>
