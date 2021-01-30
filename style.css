@@ -6,6 +6,7 @@ html {
   float: left;
   width: 50%;
   height: 1000px;
+  text-align: center;
 }
 
 .middle-column {
@@ -15,6 +16,7 @@ html {
   /*border-right: 1px solid white;*/
   width: 33%;
   height: 1000px;
+  text-align: center;
 }
 
 /*.right-column {
