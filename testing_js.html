@@ -4,6 +4,7 @@
 	<head> 
 		<script type="text/javascript">
 			var num = 0;
+			var num_upgrade_1 = 0;
 			var clicker = document.getElementById("clicker");
 
 			function clicked() {
@@ -11,17 +12,33 @@
 				var count = document.getElementById("count");
 				count.innerHTML = num;
 			}
+
+			function purchase_1() {
+				if(num >= 10){
+					num -= 10;
+					num_upgrade_1 += 1;
+					var upgrade_1 = document.getElementById("upgrade_1");
+					upgrade_1.innerHTML = num_upgrade_1;
+					var count = document.getElementById("count");
+					count.innerHTML = num;
+				}
+			}
 		</script>
 
 	</head>
 
 <body>
-	<h1>Test</h1>
-
-	<div id = "clicker" onclick="clicked()">
-		<img src="gamestop_temp.png" alt="Click" width="250" height="250">
+	<div >
+		<img id = "clicker" onclick="clicked()" src="gamestop_temp.png" alt="Click" width="250" height="250">
 	</div>
 
-	<div id = "count"></div>
+	<div>
+		<p id = "count"> 0 </p>
+	</div>
+
+	<div>
+		<p> costs $10 each: </p>
+		<button type="button" id = "upgrade_1" onclick="purchase_1()"> 0 </button>
+	</div>
 	
 </body>
