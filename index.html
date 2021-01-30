@@ -124,86 +124,49 @@
         cost.innerHTML = cost_upgrade_2;
         }
       }
+			window.onload = function () {
 
-      function purchase_3() {
-      if(num >= cost_upgrade_3){
-        num -= cost_upgrade_3;
-        var count = document.getElementById("count");
-        count.innerHTML = num;
+			var dps = []; // dataPoints
+			var chart = new CanvasJS.Chart("chartContainer", {
+				title :{
+					text: "Stonk Chart"
+				},
+				data: [{
+					type: "line",
+					dataPoints: dps
+				}]
+			});
 
-        num_upgrade_3 += 1;
-        var upgrade_3 = document.getElementById("owned_3");
-        upgrade_3.innerHTML = num_upgrade_3;
+			var xVal = 0;
+			var yVal = 15;
+			var updateInterval = 1000;
+			var dataLength = 50; // number of dataPoints visible at any point
 
-        sps += 100;
-        var stonksps = document.getElementById("stonks_per_second");
-        stonksps.innerHTML = sps;
+			var updateChart = function (count) {
 
-        cost_upgrade_3 += 500;
-        var cost = document.getElementById("upgrade_3_cost");
-        cost.innerHTML = cost_upgrade_3;
-        }
-      }
+				count = count || 1;
 
-      function purchase_4() {
-      if(num >= cost_upgrade_4){
-        num -= cost_upgrade_4;
-        var count = document.getElementById("count");
-        count.innerHTML = num;
+				for (var j = 0; j < count; j++) {
+					yVal = num;
+					dps.push({
+						x: xVal,
+						y: yVal
+					});
+					xVal++;
+				}
 
-        num_upgrade_4 += 1;
-        var upgrade_4 = document.getElementById("owned_4");
-        upgrade_4.innerHTML = num_upgrade_4;
+				if (dps.length > dataLength) {
+					dps.shift();
+				}
 
-        sps += 1000;
-        var stonksps = document.getElementById("stonks_per_second");
-        stonksps.innerHTML = sps;
+				chart.render();
+			};
 
-        cost_upgrade_4 += 500;
-        var cost = document.getElementById("upgrade_4_cost");
-        cost.innerHTML = cost_upgrade_4;
-        }
-      }
+			updateChart(dataLength);
+			setInterval(function(){updateChart()}, updateInterval);
 
-      function purchase_4() {
-      if(num >= cost_upgrade_4){
-        num -= cost_upgrade_4;
-        var count = document.getElementById("count");
-        count.innerHTML = num;
+		}
 
-        num_upgrade_4 += 1;
-        var upgrade_4 = document.getElementById("owned_4");
-        upgrade_4.innerHTML = num_upgrade_4;
-
-        sps += 1000;
-        var stonksps = document.getElementById("stonks_per_second");
-        stonksps.innerHTML = sps;
-
-        cost_upgrade_4 += 500;
-        var cost = document.getElementById("upgrade_4_cost");
-        cost.innerHTML = cost_upgrade_4;
-        }
-      }
-
-      function purchase_5() {
-      if(num >= cost_upgrade_5){
-        num -= cost_upgrade_5;
-        var count = document.getElementById("count");
-        count.innerHTML = num;
-
-        num_upgrade_5 += 1;
-        var upgrade_5 = document.getElementById("owned_5");
-        upgrade_5.innerHTML = num_upgrade_5;
-
-        sps += 10000;
-        var stonksps = document.getElementById("stonks_per_second");
-        stonksps.innerHTML = sps;
-
-        cost_upgrade_5 += 5000;
-        var cost = document.getElementById("upgrade_5_cost");
-        cost.innerHTML = cost_upgrade_5;
-        }
-      }
 
     </script>
 </head>
@@ -242,14 +205,14 @@
 				</li>
         <li>
           <button type="button" id = "upgrade_1" onclick="purchase_1()">
-            <h3> Upgrade 1, buys 1 stonk per second</h3>
+            <h3> Upgrade 1</h3>
             <p> Cost: $<span id="upgrade_1_cost">10</span></p>
             <p> Owned: <span id="owned_1">0</span></p>
           </button>
         </li>
         <li>
           <button type="button" id = "upgrade_2" onclick="purchase_2()">
-            <h3> Upgrade 2, buys 10 stonks per second</h3>
+            <h3> Upgrade 2</h3>
             <p> Cost: $<span id="upgrade_2_cost">100</span></p>
             <p> Owned: <span id="owned_2">0</span></p>
           </button>
@@ -294,7 +257,8 @@
 	</div>
 
 	<div class="middle-column">
-		<h1>Graphical Earnings</h1>
+		<div id="chartContainer" style="height: 300px; width: 450px;"></div>
+		<!--><script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script><!-->
 	</div>
 
 	<!--<div class="right-column">
