@@ -5,11 +5,23 @@
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript">
       var num = 0;
-      var sps = 0
+      var sps = 0;
       var num_upgrade_1 = 0;
       var cost_upgrade_1 = 10;
       var num_upgrade_2 = 0;
       var cost_upgrade_2 = 100;
+      var num_upgrade_3 = 0;
+      var cost_upgrade_3 = 1000;
+      var num_upgrade_4 = 0;
+      var cost_upgrade_4 = 10000;
+      var num_upgrade_5 = 0;
+      var cost_upgrade_5 = 100000;
+
+      var click_value = 1;
+      var cash_hands_bool = false;
+      var silver_hands_bool = false;
+			var gold_hands_bool = false;
+			var diamond_hands_bool = false;
 
       setInterval(function() {
         num += sps;
@@ -18,10 +30,60 @@
       }, 1000)
 
       function clicked() {
-        num += 1;
+        num += click_value;
         var count = document.getElementById("count");
         count.innerHTML = num;
       }
+
+      function cash_hands() {
+        if(!cash_hands_bool && num >= 100){
+          num -= 100;
+          click_value = 5;
+          var count = document.getElementById("count");
+          count.innerHTML = num;
+          var info = document.getElementById("cash_hands_info");
+          info.innerHTML = "BOUGHT!";
+          cash_hands = true;
+        }
+      }
+
+      function silver_hands() {
+        if(!silver_hands_bool && num >= 1000){
+          num -= 1000;
+          click_value = 50;
+          var count = document.getElementById("count");
+          count.innerHTML = num;
+          var info = document.getElementById("silver_hands_info");
+          info.innerHTML = "BOUGHT!";
+          silver_hands = true;
+        }
+      }
+
+			// Still requires the cost and click value to be change
+			function gold_hands() {
+				if(!gold_hands_bool && num >= 10000){
+					num -= 10000;
+					click_value = 500;
+					var count = document.getElementById("count");
+					count.innerHTML = num;
+					var info = document.getElementById("gold_hands_info");
+					info.innerHTML = "BOUGHT!";
+					gold_hands = true;
+				}
+			}
+
+			// Still requires the cost and click value to be change
+			function diamond_hands() {
+				if(!diamond_hands_bool && num >= 100000){
+					num -= 100000;
+					click_value = 5000;
+					var count = document.getElementById("count");
+					count.innerHTML = num;
+					var info = document.getElementById("diamond_hands_info");
+					info.innerHTML = "BOUGHT!";
+					diamond_hands = true;
+				}
+			}
 
       function purchase_1() {
         if(num >= cost_upgrade_1){
@@ -127,10 +189,32 @@
             <p> Owned: <span id="owned_2">0</span></p>
           </button>
         </li>
+        <li>
+          <button type="button" id = "upgrade_3" onclick="purchase_3()">
+            <h3> Upgrade 3, buys 100 stonks per second</h3>
+            <p> Cost: $<span id="upgrade_3_cost">1000</span></p>
+            <p> Owned: <span id="owned_3">0</span></p>
+          </button>
+        </li>
+        <li>
+          <button type="button" id = "upgrade_4" onclick="purchase_4()">
+            <h3> Upgrade 4, buys 1000 stonks per second</h3>
+            <p> Cost: $<span id="upgrade_4_cost">10000</span></p>
+            <p> Owned: <span id="owned_4">0</span></p>
+          </button>
+        </li>
+        <li>
+          <button type="button" id = "upgrade_5" onclick="purchase_5()">
+            <h3> Upgrade 5, buys 10000 stonks per second</h3>
+            <p> Cost: $<span id="upgrade_5_cost">100000</span></p>
+            <p> Owned: <span id="owned_5">0</span></p>
+          </button>
+        </li>
     	</ul>
     </nav>
 	</aside>
 <section class="main">
+<div class="container custom-scrollbar">
 <div class="row">
 
   <div class="left-column">
@@ -152,6 +236,7 @@
 	<!--<div class="right-column">
 		<h1>Test 3</h1>
 	</div><!-->
+</div>
 </div>
 </section>
 

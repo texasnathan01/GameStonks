@@ -14,7 +14,8 @@ html {
   border-left: 1px solid white;
   /*border-right: 1px solid white;*/
   width: 33%;
-  height: 1000px;
+  height: 600px;
+  text-align: center;
 }
 #chartContainer {
   margin-left: auto;
@@ -47,6 +48,7 @@ html {
     width: 20%;
     /*background-color: #333;*/
     right: 0;
+    text-align: center;
   }
   .main{
     /*background-color: #f5f5f5;*/
@@ -98,3 +100,21 @@ html {
     width: 100%;
   }
 }
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+  }
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
