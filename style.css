@@ -143,3 +143,6 @@ li, li > button {
   ::-webkit-scrollbar-corner {
     background-color: transparent;
   }
+  a.button:hover{
+     background: #333;
+}
