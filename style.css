@@ -2,6 +2,22 @@ html {
   background-color: white;
 }
 
+.custom-cur-cash, .custom-cur-cash button {
+  cursor: url("cash.png"), default;
+}
+
+.custom-cur-silver, .custom-cur-silver button {
+  cursor: url("silver.png"), default;
+}
+
+.custom-cur-gold, .custom-cur-gold button {
+  cursor: url("gold.png"), default;
+}
+
+.custom-cur-diamond, .custom-cur-diamond button {
+  cursor: url("diamond.png"), default;
+}
+
 .left-column {
   float: left;
   width: 40%;
@@ -22,6 +38,10 @@ html {
   margin-right: auto;
 }
 
+.main {
+  overflow-y: hidden;
+}
+
 /*.right-column {
   float: left;
   border-left: 1px solid white;
@@ -36,13 +56,13 @@ html {
 }
 .sidebar, .main {
     transition: all .3s ease-out;
-    overflow: scroll;
     -webkit-overflow-scrolling: touch;
     position: absolute;
     top: 64px;
     bottom: 0;
   }
   .sidebar{
+    overflow: scroll;
     width: 300px;
     background-color: grey;
     width: 20%;

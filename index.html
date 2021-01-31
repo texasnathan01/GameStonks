@@ -43,45 +43,52 @@
           count.innerHTML = num;
           var info = document.getElementById("cash_hands_info");
           info.innerHTML = "BOUGHT!";
-          cash_hands = true;
+          cash_hands_bool = true;
+          document.body.classList.add("custom-cur-cash");
         }
       }
 
       function silver_hands() {
-        if(!silver_hands_bool && num >= 1000){
+        if(!silver_hands_bool && num >= 1000 && cash_hands_bool){
           num -= 1000;
           click_value = 50;
           var count = document.getElementById("count");
           count.innerHTML = num;
           var info = document.getElementById("silver_hands_info");
           info.innerHTML = "BOUGHT!";
-          silver_hands = true;
+          silver_hands_bool = true;
+          document.body.classList.remove("custom-cur-cash");
+          document.body.classList.add("custom-cur-silver");
         }
       }
 
 			// Still requires the cost and click value to be change
 			function gold_hands() {
-				if(!gold_hands_bool && num >= 10000){
+				if(!gold_hands_bool && num >= 10000 && silver_hands_bool){
 					num -= 10000;
 					click_value = 500;
 					var count = document.getElementById("count");
 					count.innerHTML = num;
 					var info = document.getElementById("gold_hands_info");
 					info.innerHTML = "BOUGHT!";
-					gold_hands = true;
+					gold_hands_bool = true;
+          document.body.classList.remove("custom-cur-silver");
+          document.body.classList.add("custom-cur-gold");
 				}
 			}
 
 			// Still requires the cost and click value to be change
 			function diamond_hands() {
-				if(!diamond_hands_bool && num >= 100000){
+				if(!diamond_hands_bool && num >= 100000 && gold_hands_bool){
 					num -= 100000;
 					click_value = 5000;
 					var count = document.getElementById("count");
 					count.innerHTML = num;
 					var info = document.getElementById("diamond_hands_info");
 					info.innerHTML = "BOUGHT!";
-					diamond_hands = true;
+					diamond_hands_bool = true;
+          document.body.classList.remove("custom-cur-gold");
+          document.body.classList.add("custom-cur-diamond");
 				}
 			}
 
@@ -123,6 +130,7 @@
         var cost = document.getElementById("upgrade_2_cost");
         cost.innerHTML = cost_upgrade_2;
         }
+
       }
 			window.onload = function () {
 
@@ -171,6 +179,7 @@
     </script>
 </head>
 <body>
+
 <aside class="sidebar">
   	<nav>
   		<h3>Upgrades</h3>
