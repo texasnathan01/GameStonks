@@ -39,13 +39,14 @@
         var animTime = 1.25;
         var btn = document.getElementById("clicker_btn");
         var widthPx = btn.offsetWidth;
+        var leftPx = btn.offsetLeft;
         var dollar = document.createElement("DIV");
         dollar.style.backgroundImage = "url('dollar.png')";
         dollar.style.backgroundSize = "cover";
         dollar.style.width = "30px";
         dollar.style.height = "50px";
         dollar.style.position = "fixed";
-        dollar.style.left = (widthPx * Math.random()).toFixed(0).toString() + "px";
+        dollar.style.left = ((leftPx + widthPx * Math.random()).toFixed(0)).toString() + "px";
         dollar.style.animation = "dollarRain " + animTime.toString() + "s ease-in";
 
         setTimeout(function() {
