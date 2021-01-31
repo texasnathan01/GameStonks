@@ -2,11 +2,15 @@ html {
   background-color: white;
 }
 
-.clicker_button:active {
-  transform: translateY(4px);
+.clicker_button:hover {
+  transition: transform .1s;
+  transform: scale(1.1);
 }
 
-
+.clicker_button:active {
+  transition: transform .1s;
+  transform: translateY(4px);
+}
 
 .custom-cur-cash, .custom-cur-cash button {
   cursor: url("cash.png"), default;
