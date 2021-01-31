@@ -2,6 +2,15 @@ html {
   background-color: white;
 }
 
+.main.powerup {
+  animation: rainbow 1.5s infinite;
+  background-color: rgba(1,0, 0, 1) !important;
+  background-image: url('https://media.tenor.com/images/dfa2a4af878da14382a73fd774122718/tenor.gif');
+  background-size: 128px;
+  background-repeat-x: repeat;
+  background-repeat-y: repeat;
+}
+
 @keyframes dollarRain{
   0% {
     transform: translate(0, 0vh);

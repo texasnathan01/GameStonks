@@ -67,6 +67,7 @@
 
         rocket.remove('');
 
+        document.querySelector("section.main").classList.add("powerup");
         console.log(audio);
         audio.currentTime = 0;
         audio.play();
@@ -76,6 +77,7 @@
           closePowerupTimeout = null;
         }
         closePowerupTimeout = setTimeout(function () {
+          document.querySelector("section.main").classList.remove("powerup");
           chart.style.animation = "";
           sps /= 10;
           click_value /= 10;
