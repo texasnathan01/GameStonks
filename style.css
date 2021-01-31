@@ -3,7 +3,7 @@ html {
 }
 
 .main.powerup {
-  animation: rainbow 1.5s infinite;
+  animation: rainbow 0.908s infinite;
   background-color: rgba(1,0, 0, 1) !important;
   background-image: url('https://media.tenor.com/images/dfa2a4af878da14382a73fd774122718/tenor.gif');
   background-size: 128px;
@@ -33,10 +33,16 @@ html {
 
 @keyframes rainbow {
   0% {
-    filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg) contrast(300%);
+    transform: skewX(-10deg);
+  }
+  50% {
+    filter: hue-rotate(180deg) contrast(300%);
+    transform: skewX(10deg);
   }
   100% {
-    filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg) contrast(300%);
+    transform: skewX(-10deg);
   }
 }
 

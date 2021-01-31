@@ -27,10 +27,11 @@
       let audio = new Audio('powerup.mp3');
 
       setInterval(function() {
-        num += sps;
-        var count = document.getElementById("count");
-        count.innerHTML = num;
-        if(Math.random() * 100 < 3){
+        num += sps * 0.2;
+        num.toFixed(2);
+        updateNumber();
+
+        if(Math.random() * 100 * (1 / 0.2) < 3){
           num++;
           var animTime = 2.5;
           var rocket = document.createElement("DIV");
@@ -52,7 +53,7 @@
           }, animTime * 1000);
 
         }
-      }, 1000);
+       }, 200);
 
       var closePowerupTimeout = null;
       function powerup(rocket) {
@@ -63,7 +64,7 @@
         // stonksps.style.animation = "rainbow 5s infinite";
 
         var chart = document.getElementById("chartContainer");
-        chart.style.animation = "rainbow 1.5s infinite";
+        chart.style.animation = "rainbow 0.908s infinite";
 
         rocket.remove('');
 
@@ -86,10 +87,18 @@
         }, 10000);
       }
 
+      function updateNumber(){
+        var count = document.getElementById("count");
+        count.innerText = num.toLocaleString('en-US', {
+          'style': 'currency',
+          'currency': 'USD'
+        })
+      }
+
       function clicked() {
         num += click_value;
         var count = document.getElementById("count");
-        count.innerHTML = num;
+        updateNumber();
 
         var animTime = 1.25;
         var btn = document.getElementById("clicker_btn");
@@ -116,8 +125,7 @@
         if(!cash_hands_bool && num >= 100){
           num -= 100;
           click_value = 5;
-          var count = document.getElementById("count");
-          count.innerHTML = num;
+          updateNumber();
           var info = document.getElementById("cash_hands_info");
           info.innerHTML = "BOUGHT!";
           cash_hands_bool = true;
@@ -129,8 +137,7 @@
         if(!silver_hands_bool && num >= 5000 && cash_hands_bool){
           num -= 5000;
           click_value = 50;
-          var count = document.getElementById("count");
-          count.innerHTML = num;
+          updateNumber();
           var info = document.getElementById("silver_hands_info");
           info.innerHTML = "BOUGHT!";
           silver_hands_bool = true;
@@ -144,8 +151,7 @@
 				if(!gold_hands_bool && num >= 100000 && silver_hands_bool){
 					num -= 100000;
 					click_value = 2000;
-					var count = document.getElementById("count");
-					count.innerHTML = num;
+          updateNumber();
 					var info = document.getElementById("gold_hands_info");
 					info.innerHTML = "BOUGHT!";
 					gold_hands_bool = true;
@@ -159,8 +165,7 @@
 				if(!diamond_hands_bool && num >= 1000000 && gold_hands_bool){
 					num -= 1000000;
 					click_value = 8000;
-					var count = document.getElementById("count");
-					count.innerHTML = num;
+          updateNumber();
 					var info = document.getElementById("diamond_hands_info");
 					info.innerHTML = "BOUGHT!";
 					diamond_hands_bool = true;
@@ -172,8 +177,7 @@
       function purchase_1() {
         if(num >= cost_upgrade_1){
           num -= cost_upgrade_1;
-          var count = document.getElementById("count");
-          count.innerHTML = num;
+          updateNumber();
 
           num_upgrade_1 += 1;
           var upgrade_1 = document.getElementById("owned_1");
@@ -192,8 +196,8 @@
       function purchase_2() {
       if(num >= cost_upgrade_2){
         num -= cost_upgrade_2;
-        var count = document.getElementById("count");
-        count.innerHTML = num;
+        
+        updateNumber();
 
         num_upgrade_2 += 1;
         var upgrade_2 = document.getElementById("owned_2");
@@ -213,8 +217,8 @@
 			function purchase_3() {
       if(num >= cost_upgrade_3){
         num -= cost_upgrade_3;
-        var count = document.getElementById("count");
-        count.innerHTML = num;
+        
+        updateNumber();
 
         num_upgrade_3 += 1;
         var upgrade_3 = document.getElementById("owned_3");
@@ -233,8 +237,8 @@
 			function purchase_4() {
       if(num >= cost_upgrade_4){
         num -= cost_upgrade_4;
-        var count = document.getElementById("count");
-        count.innerHTML = num;
+        
+        updateNumber();
 
         num_upgrade_4 += 1;
         var upgrade_4 = document.getElementById("owned_4");
@@ -253,8 +257,8 @@
 			function purchase_5() {
       if(num >= cost_upgrade_5){
         num -= cost_upgrade_5;
-        var count = document.getElementById("count");
-        count.innerHTML = num;
+        
+        updateNumber();
 
         num_upgrade_5 += 1;
         var upgrade_5 = document.getElementById("owned_5");
@@ -270,6 +274,7 @@
         }
       }
 
+      var lastMax = 1;
 			window.onload = function () {
 
 			var dps = []; // dataPoints
@@ -286,8 +291,9 @@
           markerSize: 0
 				}],
         axisY: {
-          valueFormatString: "$0.00",
-          labelFontColor: "#00FF00"
+          valueFormatString: "$#,##0.00",
+          labelFontColor: "#00FF00",
+          minimum: 0
         },
         axisX: {
           labelFontColor: "#000000"
@@ -296,18 +302,19 @@
 
 			var xVal = 0;
 			var yVal = 15;
-			var updateInterval = 1000;
-			var dataLength = 20; // number of dataPoints visible at any point
+			var updateInterval = 200;
+			var dataLength = 20 * (1 / 0.2); // number of dataPoints visible at any point
 
 			var updateChart = function (count) {
-
+        if (chart.axisY[0]) chart.axisY[0].set('maximum', Math.max(1, lastMax * 1.5));
 				count = count || 1;
 
 				for (var j = 0; j < count; j++) {
 					yVal = num;
+          if (num > lastMax) lastMax = num;
 					dps.push({
 						x: xVal,
-						y: yVal
+						y: yVal + (Math.random() - 0.5) * lastMax * 0.025
 					});
 					xVal++;
 				}
@@ -454,7 +461,7 @@
 
   <div class="left-column">
     <h1 style="color:red; font-family: 'Montserrat' " >
-      Total stonks: $ <span id = "count">0</span>
+      Total stonks: <span id = "count">0</span>
     </h1>
     <h3 style="color:red; font-family: 'Montserrat' ">
       Stonks per second: $ <span id="stonks_per_second">0</span>
