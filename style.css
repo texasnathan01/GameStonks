@@ -149,8 +149,11 @@ li, li > button {
   ::-webkit-scrollbar-corner {
     background-color: transparent;
   }
-  .btn{
-    .btn:hover {      
-    background-color: #333; color: grey; 
+
+  .btn {
+    background-color: black;
   }
+
+  .btn:hover {
+    background-color: #333;
   }
