@@ -11,13 +11,13 @@
       var num_upgrade_1 = 0;
       var cost_upgrade_1 = 10;
       var num_upgrade_2 = 0;
-      var cost_upgrade_2 = 100;
+      var cost_upgrade_2 = 1000;
       var num_upgrade_3 = 0;
-      var cost_upgrade_3 = 1000;
+      var cost_upgrade_3 = 10000;
       var num_upgrade_4 = 0;
-      var cost_upgrade_4 = 10000;
+      var cost_upgrade_4 = 100000;
       var num_upgrade_5 = 0;
-      var cost_upgrade_5 = 100000;
+      var cost_upgrade_5 = 10000000;
 
       var click_value = 1;
       var cash_hands_bool = false;
@@ -51,8 +51,8 @@
       }
 
       function silver_hands() {
-        if(!silver_hands_bool && num >= 1000 && cash_hands_bool){
-          num -= 1000;
+        if(!silver_hands_bool && num >= 5000 && cash_hands_bool){
+          num -= 5000;
           click_value = 50;
           var count = document.getElementById("count");
           count.innerHTML = num;
@@ -66,9 +66,9 @@
 
 			// Still requires the cost and click value to be change
 			function gold_hands() {
-				if(!gold_hands_bool && num >= 10000 && silver_hands_bool){
-					num -= 10000;
-					click_value = 500;
+				if(!gold_hands_bool && num >= 100000 && silver_hands_bool){
+					num -= 100000;
+					click_value = 2000;
 					var count = document.getElementById("count");
 					count.innerHTML = num;
 					var info = document.getElementById("gold_hands_info");
@@ -81,9 +81,9 @@
 
 			// Still requires the cost and click value to be change
 			function diamond_hands() {
-				if(!diamond_hands_bool && num >= 100000 && gold_hands_bool){
-					num -= 100000;
-					click_value = 5000;
+				if(!diamond_hands_bool && num >= 1000000 && gold_hands_bool){
+					num -= 1000000;
+					click_value = 8000;
 					var count = document.getElementById("count");
 					count.innerHTML = num;
 					var info = document.getElementById("diamond_hands_info");
@@ -128,7 +128,7 @@
         var stonksps = document.getElementById("stonks_per_second");
         stonksps.innerHTML = sps;
 
-        cost_upgrade_2 += 50;
+        cost_upgrade_2 += 150;
         var cost = document.getElementById("upgrade_2_cost");
         cost.innerHTML = cost_upgrade_2;
         }
@@ -149,7 +149,7 @@
         var stonksps = document.getElementById("stonks_per_second");
         stonksps.innerHTML = sps;
 
-        cost_upgrade_3 += 500;
+        cost_upgrade_3 += 2000;
         var cost = document.getElementById("upgrade_3_cost");
         cost.innerHTML = cost_upgrade_3;
         }
@@ -165,11 +165,11 @@
         var upgrade_4 = document.getElementById("owned_4");
         upgrade_4.innerHTML = num_upgrade_4;
 
-        sps += 1000;
+        sps += 3000;
         var stonksps = document.getElementById("stonks_per_second");
         stonksps.innerHTML = sps;
 
-        cost_upgrade_4 += 5000;
+        cost_upgrade_4 += 20000;
         var cost = document.getElementById("upgrade_4_cost");
         cost.innerHTML = cost_upgrade_4;
         }
@@ -189,7 +189,7 @@
         var stonksps = document.getElementById("stonks_per_second");
         stonksps.innerHTML = sps;
 
-        cost_upgrade_5 += 50000;
+        cost_upgrade_5 += 500000;
         var cost = document.getElementById("upgrade_5_cost");
         cost.innerHTML = cost_upgrade_5;
         }
@@ -278,7 +278,7 @@
             </div>
             <div style="display: inline-block; text-align: left; width: 69%">
               <p style="color:red"> Click value: $50 </p>
-              <p id="silver_hands_info" style="color:red"> Cost: $1000 </p>
+              <p id="silver_hands_info" style="color:red"> Cost: $5000 </p>
             </div>
           </button>
         </li>
@@ -289,8 +289,8 @@
               <img src = "goldHands.png">
             </div>
             <div style="display: inline-block; text-align: left; width: 69%">
-              <p style="color:red"> Click value: $500 </p>
-						  <p id="gold_hands_info" style="color:red"> Cost: $10000 </p>
+              <p style="color:red"> Click value: $2000 </p>
+						  <p id="gold_hands_info" style="color:red"> Cost: $100000 </p>
             </div>
 					</button>
 				</li>
@@ -301,8 +301,8 @@
               <img src = "diamondHands.png">
             </div>
             <div style="display: inline-block; text-align: left; width: 69%">
-              <p style="color:red"> Click value: $5000 </p>
-			  <p id="diamond_hands_info" style="color:red"> Cost: $100000 </p>
+              <p style="color:red"> Click value: $8000 </p>
+			  <p id="diamond_hands_info" style="color:red"> Cost: $1000000 </p>
             </div>
 					</button>
 				</li>
@@ -327,7 +327,7 @@
             </div>
             <div style="display: inline-block; text-align: left; width: 69%">
               <p style="color:red"> Buys 10 stonks per second </p>
-              <p style="color:red"> Cost: $<span id="upgrade_2_cost">100</span></p>
+              <p style="color:red"> Cost: $<span id="upgrade_2_cost">1000</span></p>
               <p style="color:red"> Owned: <span id="owned_2">0</span></p>
             </div>
           </button>
@@ -340,7 +340,7 @@
             </div>
             <div style="display: inline-block; text-align: left; width: 69%">
               <p style="color:red"> Buys 100 stonks per second </p>
-              <p style="color:red"> Cost: $<span id="upgrade_3_cost">1000</span></p>
+              <p style="color:red"> Cost: $<span id="upgrade_3_cost">10000</span></p>
               <p style="color:red"> Owned: <span id="owned_3">0</span></p>
             </div>
           </button>
@@ -352,8 +352,8 @@
               <img src="famousGuy.png", width="75", hieght="75">
             </div>
             <div style="display: inline-block; text-align: left; width: 69%">
-              <p style="color:red"> Buys 1000 stonks per second </p>
-              <p style="color:red"> Cost: $<span id="upgrade_4_cost">10000</span></p>
+              <p style="color:red"> Buys 3000 stonks per second </p>
+              <p style="color:red"> Cost: $<span id="upgrade_4_cost">100000</span></p>
               <p style="color:red"> Owned: <span id="owned_4">0</span></p>
             </div>
           </button>
@@ -366,7 +366,7 @@
             </div>
             <div style="display: inline-block; text-align: left; width: 69%">
               <p style="color:red"> Buys 10000 stonks per second </p>
-              <p style="color:red"> Cost: $<span id="upgrade_5_cost">100000</span></p>
+              <p style="color:red"> Cost: $<span id="upgrade_5_cost">10000000</span></p>
               <p style="color:red"> Owned: <span id="owned_5">0</span></p>
             </div>
           </button>
