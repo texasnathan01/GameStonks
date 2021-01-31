@@ -198,12 +198,23 @@
 			var dps = []; // dataPoints
 			var chart = new CanvasJS.Chart("chartContainer", {
 				title :{
-					text: "Stonk Chart"
+					text: "Stonk Chart",
+          fontColor: "#00FF00"
 				},
+        backgroundColor: "#0E0E0E",
 				data: [{
 					type: "line",
-					dataPoints: dps
-				}]
+					dataPoints: dps,
+          lineColor: "#00FF00",
+          markerSize: 0
+				}],
+        axisY: {
+          valueFormatString: "$0.00",
+          labelFontColor: "#00FF00"
+        },
+        axisX: {
+          labelFontColor: "#0E0E0E"
+        }
 			});
 
 			var xVal = 0;
