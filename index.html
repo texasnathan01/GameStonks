@@ -24,6 +24,7 @@
       var silver_hands_bool = false;
 			var gold_hands_bool = false;
 			var diamond_hands_bool = false;
+      let audio = new Audio('powerup.mp3');
 
       setInterval(function() {
         num += sps;
@@ -51,8 +52,9 @@
           }, animTime * 1000);
 
         }
-      }, 1000)
+      }, 1000);
 
+      var closePowerupTimeout = null;
       function powerup(rocket) {
         click_value *= 10;
         sps *= 10;
@@ -63,15 +65,23 @@
         var chart = document.getElementById("chartContainer");
         chart.style.animation = "rainbow 1.5s infinite";
 
-        rocket.remove();
+        rocket.remove('');
 
-        setTimeout(function () {
+        console.log(audio);
+        audio.currentTime = 0;
+        audio.play();
+
+        if (closePowerupTimeout) {
+          window.clearTimeout(closePowerupTimeout);
+          closePowerupTimeout = null;
+        }
+        closePowerupTimeout = setTimeout(function () {
           chart.style.animation = "";
           sps /= 10;
           click_value /= 10;
           stonksps = document.getElementById("stonks_per_second");
           stonksps.innerHTML = sps;
-        }, 5000);
+        }, 10000);
       }
 
       function clicked() {
