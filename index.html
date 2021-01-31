@@ -147,7 +147,7 @@
         var stonksps = document.getElementById("stonks_per_second");
         stonksps.innerHTML = sps;
 
-        cost_upgrade_2 += 500;
+        cost_upgrade_3 += 500;
         var cost = document.getElementById("upgrade_3_cost");
         cost.innerHTML = cost_upgrade_3;
         }
@@ -181,7 +181,7 @@
 
         num_upgrade_5 += 1;
         var upgrade_5 = document.getElementById("owned_5");
-        upgrade_2.innerHTML = num_upgrade_5;
+        upgrade_5.innerHTML = num_upgrade_5;
 
         sps += 10000;
         var stonksps = document.getElementById("stonks_per_second");
@@ -345,14 +345,14 @@
         </li>
         <li>
           <button type="button" id = "upgrade_4" onclick="purchase_4()">
-            <h3> X Æ A-12</h3>
+            <h3 style="color:red"> X Æ A-12</h3>
             <div style="display: inline-block; text-align: center; width: 29%">
-
+              <img src="famousGuy.png", width="75", hieght="75">
             </div>
             <div style="display: inline-block; text-align: left; width: 69%">
-              <p> Buys 1000 stonks per second </p>
-              <p> Cost: $<span id="upgrade_4_cost">10000</span></p>
-              <p> Owned: <span id="owned_4">0</span></p>
+              <p style="color:red"> Buys 1000 stonks per second </p>
+              <p style="color:red"> Cost: $<span id="upgrade_4_cost">10000</span></p>
+              <p style="color:red"> Owned: <span id="owned_4">0</span></p>
             </div>
           </button>
         </li>
