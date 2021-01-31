@@ -191,7 +191,7 @@ li, li > button {
     background-clip: content-box;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #a8bbbf;
+    background-color: red;
   }
   ::-webkit-scrollbar-corner {
     background-color: transparent;
