@@ -29,7 +29,50 @@
         num += sps;
         var count = document.getElementById("count");
         count.innerHTML = num;
+        if(Math.random() * 100 < 5){
+          num++;
+          var animTime = 10;
+          var rocket = document.createElement("DIV");
+          rocket.style.backgroundImage = "url('dew.png')";
+          rocket.style.backgroundSize = "cover";
+          rocket.style.width = "50px";
+          rocket.style.height = "50px";
+          rocket.style.position = "fixed"; 
+          rocket.style.bottom = "50px";
+          rocket.style.left = (Math.random() * 100).toString() + "vw";
+          rocket.style.animation = "rocketDew " + animTime.toString() + "s ease-in";
+          rocket.addEventListener('click', function() {
+            powerup(rocket);
+          });
+          document.body.appendChild(rocket);
+
+          setTimeout(function() {
+            if (rocket) rocket.remove();
+          }, animTime * 1000);
+
+        }
       }, 1000)
+
+      function powerup(rocket) {
+        click_value *= 10;
+        sps *= 10;
+        stonksps = document.getElementById("stonks_per_second");
+        stonksps.innerHTML = sps;
+        // stonksps.style.animation = "rainbow 5s infinite";
+
+        var chart = document.getElementById("chartContainer");
+        chart.style.animation = "rainbow 1.5s infinite";
+
+        rocket.remove();
+
+        setTimeout(function () {
+          chart.style.animation = "";
+          sps /= 10;
+          click_value /= 10;
+          stonksps = document.getElementById("stonks_per_second");
+          stonksps.innerHTML = sps;
+        }, 5000);
+      }
 
       function clicked() {
         num += click_value;
@@ -54,6 +97,7 @@
         }, animTime * 1000);
 
         document.getElementById("top").appendChild(dollar);
+
       }
 
       function cash_hands() {
