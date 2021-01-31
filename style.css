@@ -82,7 +82,6 @@ html {
 .middle-column {
   float: left;
   width: 50%;
-  border-left: 1px solid white;
   /*border-right: 1px solid white;*/
   width: 33%;
   height: 600px;
