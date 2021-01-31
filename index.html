@@ -24,6 +24,10 @@
       var silver_hands_bool = false;
 			var gold_hands_bool = false;
 			var diamond_hands_bool = false;
+
+      //let audio = new Audio('music_background.mp3');
+      //audio.play();
+
       let audio = new Audio('powerup.mp3');
 
       setInterval(function() {
@@ -69,7 +73,6 @@
         rocket.remove('');
 
         document.querySelector("section.main").classList.add("powerup");
-        console.log(audio);
         audio.currentTime = 0;
         audio.play();
 
@@ -334,7 +337,6 @@
     </script>
 </head>
 <body>
-
 <aside class="sidebar">
   	<nav>
   		<h3 style="color:red">Upgrades</h3>
