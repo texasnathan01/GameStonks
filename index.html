@@ -35,6 +35,26 @@
         num += click_value;
         var count = document.getElementById("count");
         count.innerHTML = num;
+
+        var animTime = 1.25;
+
+        var btn = document.getElementById("clicker_btn");
+        var widthPx = btn.offsetWidth;
+
+        var dollar = document.createElement("DIV");
+        dollar.style.backgroundImage = "url('dollar_temp.png')";
+        dollar.style.backgroundSize = "cover";
+        dollar.style.width = "50px";
+        dollar.style.height = "50px";
+        dollar.style.position = "fixed";
+        dollar.style.left = (widthPx * Math.random()).toFixed(0).toString() + "px";
+        dollar.style.animation = "dollarRain " + animTime.toString() + "s ease-in";
+
+        setTimeout(function() {
+          dollar.remove();
+        }, animTime * 1000);
+
+        document.getElementById("top").appendChild(dollar);
       }
 
       function cash_hands() {
@@ -249,7 +269,6 @@
 
 		}
 
-
     </script>
 </head>
 <body>
@@ -385,7 +404,9 @@
     <h3 style="color:red; font-family: 'Montserrat' ">
       Stonks per second: $ <span id="stonks_per_second">0</span>
     </h3>
-    <img class="clicker_button" onclick="clicked()" src="gameStonksNew.png" alt="Click" >
+    <div id="top">
+      <img class="clicker_button" id="clicker_btn" onclick="clicked()" src="gameStonksNew.png" alt="Click" >    
+    </div>
 
 	</div>
 
