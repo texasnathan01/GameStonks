@@ -30,10 +30,6 @@
 
       let audio = new Audio('powerup.mp3');
 
-      lightBoxClose = function() {
-  		document.querySelector(".lightbox").classList.add("closed");
-	  }
-
       setInterval(function() {
         num += sps * 0.2;
         num.toFixed(2);
@@ -462,15 +458,6 @@
     </nav>
 	</aside>
 <section class="main">
-<div class="lightbox">
-  <div class="iframeContainer">
-    <div class="toolbarLB">
-      <span class="closeLB" onclick="lightBoxClose()">x</span>
-    </div>
-    <iframe width="500" height="287" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-    allowTransparency="true"></iframe>
-  </div>
-</div>
 <div class="container custom-scrollbar">
 <div class="row">
 
